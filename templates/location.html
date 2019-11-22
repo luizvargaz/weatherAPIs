@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Custom Theme Style -->
+    <link href="http://104.239.158.49/analytics/build/css/custom.min.css" rel="stylesheet">
+
+      <!-- OpenWeather Style -->
+      <link href="https://openweathermap.org/themes/openweathermap/assets/css/weather_widget.a897b22b0c2ecd513644.css" rel="stylesheet">
+      <link href="https://openweathermap.org/themes/openweathermap/assets/css/weather_widget_styles.a897b22b0c2ecd513644.css" rel="stylesheet">
+        <style>
+            #myProgress {
+              width: 100%;
+              background-color: #ddd;
+            }
+
+            #myBar {
+              width: 1%;
+              height: 30px;
+              background-color: #4CAF50;
+            }
+        </style>
+  </head>
+
+  <body class="login" onload="start()">
+     <div class="col-md-12 col-sm-12 col-xs-12 text-center" role="main">
+
+         <div class="login_wrapper">
+             <form method="POST" align="center" name="myform">
+                <div class="field has-addons">
+                    <textarea name="city" id="location" value="Swag" style="display:none;"></textarea>
+                   <!--<div class="control">
+                        <button class="button is-info" >
+                            Enviar
+                        </button>
+                    </div>-->
+                </div>
+             </form>
+            <button class="btn btn-primary" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Loading...
+            </button>
+
+             <!--<div id="myProgress">
+                <div id="myBar"></div>
+            </div>-->
+         </div>
+
+     </div>
+  </body>
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        var i = 0;
+        function move() {
+          if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setInterval(frame, 10);
+            function frame() {
+              if (width >= 100) {
+                clearInterval(id);
+                i = 0;
+              } else {
+                width++;
+                elem.style.width = width + "%";
+              }
+            }
+          }
+        }
+    </script>
+  <script>
+        var x = document.getElementById("location");
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            x.innerText = "Geolocation is not supported by this browser.";
+          }
+        }
+
+        function showPosition(position) {
+          x.innerHTML = position.coords.latitude +
+          "," + position.coords.longitude;
+        }
+    </script>
+    <script type="text/javascript">
+        var wait=setTimeout("document.myform.submit();",1000);
+    </script>
+
+    <script>
+        function start(){
+            getLocation();
+            move()
+        }
+    </script>
+</html>

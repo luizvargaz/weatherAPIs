@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Custom Theme Style -->
+    <link href="http://104.239.158.49/analytics/build/css/custom.min.css" rel="stylesheet">
+
+      <!-- OpenWeather Style -->
+      <link href="https://openweathermap.org/themes/openweathermap/assets/css/weather_widget.a897b22b0c2ecd513644.css" rel="stylesheet">
+      <link href="https://openweathermap.org/themes/openweathermap/assets/css/weather_widget_styles.a897b22b0c2ecd513644.css" rel="stylesheet">
+
+  </head>
+
+  <body class="login">
+      <div class="col-md-12 col-sm-12 col-xs-12" role="main">
+
+          <h6 class="weather-widget__city-name" align="center">Tu ubicación actual es: </h6>
+          <span class="subtitle"  align="center"><h6>Latitud: {{ loc.lat }}</h6></span>
+          <span class="subtitle"  align="center"><h6>Longitud: {{ loc.lon }}</h6></span>
+
+          <!-- OpenWeatherMap -->
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+
+                  <div class="x_panel">
+
+                      <div class="x_title">
+                          <h2 class="widget__title" align="center">OpenWeather</h2>
+                          <h6 align="center"> {{ OpenWeather.city}}, {{ OpenWeather.country}}</h6>
+                          <h6 align="center">Lat: {{ OpenWeather.latitude}}, lon: {{OpenWeather.longitude}}</h6>
+                          <ul class="nav navbar-right panel_toolbox"></ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <!-- Current weather -->
+                      <div class="col-md-8 col-sm-6 col-xs-12">
+                          <div id="weather-widget" class="weather-widget">
+
+                              <p weather-widget__main></p>
+
+                              <p class="weather-widget__main">{{ OpenWeather.dt}}</p>
+
+                              <h3 class="weather-widget__temperature">
+                                  <img class="weather-widget__img" src="http://openweathermap.org/img/wn/{{ OpenWeather.icon}}.png", width="50" height="50"><span>{{ OpenWeather.temperature}} °C</span>
+                              </h3>
+                              <p class="weather-widget__main">{{ OpenWeather.description}}</p>
+
+                              <table class="table">
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Viento</th>
+                                      <td>{{ OpenWeather.wind_speed }} m/s</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Humedad</th>
+                                      <td>{{ OpenWeather.humidity }}  %</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Presión</th>
+                                      <td>{{ OpenWeather.pressure }} hpa</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Visibilidad</th>
+                                      <td>{{ OpenWeather.visibility }} m</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Temperatura Máxima</th>
+                                      <td>{{ OpenWeather.tem_max }}</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Temperatura Mínima</th>
+                                      <td>{{ OpenWeather.tem_min }}</td>
+                                    </tr>
+
+                                  </tbody>
+
+                              </table>
+
+                          </div>
+                      </div>
+                      <!-- Current weather -->
+
+                      <!-- Forecast weather -->
+                      <div class="col-md-4 col-sm-6 col-xs-12">
+
+                          <div class="weather-forecast-icons">
+
+                              <div class="weather-forecast-hourly-list__items">
+                                  <img alt="clear sky" src="//openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                                  <div class="small_val" title="Temp">23.6 °C</div>
+                                  <div class="small_val" title="Wind">2.66 m/s , </div>
+                                  <div class="small_val_grey" title="Pressure">1009</div>
+                              </div>
+
+                              <div class="weather-forecast-icons__item">
+                                  <img alt="clear sky" src="//openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                                  <div class="small_val" title="Temp">23.6 °C</div>
+                                  <div class="small_val" title="Wind">2.66 m/s , </div>
+                                  <div class="small_val_grey" title="Pressure">1009</div>
+                              </div>
+
+                          </div>
+
+                      </div>
+                      <!-- Forecast weather -->
+                  </div>
+
+            </div>
+           </div>
+          <!-- /.OpenWeatherMap -->
+
+           <!-- Weatherbit -->
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+
+                  <div class="x_panel">
+
+                      <div class="x_title">
+                          <h2 class="widget__title" align="center"> Weatherbit</h2>
+                          <h6 align="center"> {{  Weatherbit.city}}, {{  Weatherbit.country}}</h6>
+                          <h6 align="center">Lat: {{  Weatherbit.latitude}}, lon: {{ Weatherbit.longitude}}</h6>
+                          <ul class="nav navbar-right panel_toolbox"></ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <!-- Current weather -->
+                      <div class="col-md-8 col-sm-6 col-xs-12">
+                          <div id="weather-widget" class="weather-widget">
+
+                              <p weather-widget__main></p>
+
+                              <p class="weather-widget__main">{{  Weatherbit.dt}}</p>
+
+                              <h3 class="weather-widget__temperature">
+                                  <img class="weather-widget__img" src="https://www.weatherbit.io/static/img/icons/{{  Weatherbit.icon}}.png", width="50" height="50"><span>{{  Weatherbit.temperature}} °C</span>
+                              </h3>
+                              <p class="weather-widget__main">{{  Weatherbit.description}}</p>
+
+                              <table class="table">
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Viento</th>
+                                      <td>{{  Weatherbit.wind_speed }} m/s</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Precipitación</th>
+                                      <td>{{  Weatherbit.precipitation }} mm/hr</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Presión</th>
+                                      <td>{{  Weatherbit.pressure }} mb</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Visibilidad</th>
+                                      <td>{{  Weatherbit.visibility }} km</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Cobertura de nubes</th>
+                                      <td>{{  Weatherbit.clouds }} %</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Radiación solar</th>
+                                      <td>{{  Weatherbit.solar_rad }} W/m^2</td>
+                                    </tr>
+
+                                  </tbody>
+
+                              </table>
+
+                          </div>
+                      </div>
+                      <!-- Current weather -->
+
+                      <!-- Forecast weather -->
+                      <div class="col-md-4 col-sm-6 col-xs-12">
+
+                          <div class="weather-forecast-icons">
+
+                              <div class="weather-forecast-hourly-list__items">
+                                  <img alt="clear sky" src="//openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                                  <div class="small_val" title="Temp">23.6 °C</div>
+                                  <div class="small_val" title="Wind">2.66 m/s , </div>
+                                  <div class="small_val_grey" title="Pressure">1009</div>
+                              </div>
+
+                              <div class="weather-forecast-icons__item">
+                                  <img alt="clear sky" src="//openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                                  <div class="small_val" title="Temp">23.6 °C</div>
+                                  <div class="small_val" title="Wind">2.66 m/s , </div>
+                                  <div class="small_val_grey" title="Pressure">1009</div>
+                              </div>
+
+                          </div>
+
+                      </div>
+                      <!-- Forecast weather -->
+                  </div>
+
+            </div>
+           </div>
+          <!-- /Weatherbit -->
+
+          <!-- Dark Sky API  -->
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+
+                  <div class="x_panel">
+
+                      <div class="x_title">
+                          <h2 class="widget__title" align="center"> Dark Sky </h2>
+                          <h6 align="center">Lat: {{ DarkSky.latitude }}, lon: {{ DarkSky.longitude }}</h6>
+                          <ul class="nav navbar-right panel_toolbox"></ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <!-- Current weather -->
+                      <div class="col-md-8 col-sm-6 col-xs-12">
+                          <div id="weather-widget" class="weather-widget">
+
+                              <p weather-widget__main></p>
+
+                              <p class="weather-widget__main">{{ DarkSky.dt}}</p>
+
+                              <h3 class="weather-widget__temperature">
+                                  <img class="weather-widget__img" src="https://darksky.net/images/weather-icons/{{ DarkSky.icon}}.png", width="50" height="50"><span>{{ DarkSky.temperature }} °C</span>
+                              </h3>
+                              <p class="weather-widget__main">{{ DarkSky.description }}</p>
+
+                              <table class="table">
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Viento</th>
+                                      <td>{{ DarkSky.wind_speed }} m/s</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Humedad</th>
+                                      <td>{{ DarkSky.humidity }} %</td>
+                                    </tr>
+
+                                  </tbody>
+                                    <tr>
+                                      <th scope="row">Precipitación</th>
+                                      <td>{{ DarkSky.precipitation }} mm/hr</td>
+                                    </tr>
+                                   <tr>
+                                      <th scope="row">Precipitación acumulada</th>
+                                      <td>{{ DarkSky.precipitation }} cm</td>
+                                    </tr>
+                                   <tr>
+                                      <th scope="row">Probabilidad de precipitación</th>
+                                      <td>{{ DarkSky.precip_probability }} %</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Presión</th>
+                                      <td>{{ DarkSky.pressure }}  hpa</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Visibilidad</th>
+                                      <td>{{ DarkSky.visibility }} km</td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Cobertura de nubes</th>
+                                      <td>{{ DarkSky.clouds }} %</td>
+                                    </tr>
+
+                              </table>
+
+                          </div>
+                      </div>
+                      <!-- Current weather -->
+
+                      <!-- Forecast weather -->
+                      <div class="col-md-4 col-sm-6 col-xs-12">
+
+                          <div class="weather-forecast-icons">
+
+                              <div class="weather-forecast-hourly-list__items">
+                                  <img alt="clear sky" src="//openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                                  <div class="small_val" title="Temp">23.6 °C</div>
+                                  <div class="small_val" title="Wind">2.66 m/s , </div>
+                                  <div class="small_val_grey" title="Pressure">1009</div>
+                              </div>
+
+                              <div class="weather-forecast-icons__item">
+                                  <img alt="clear sky" src="//openweathermap.org/img/wn/01d@2x.png" width="50" height="50">
+                                  <div class="small_val" title="Temp">23.6 °C</div>
+                                  <div class="small_val" title="Wind">2.66 m/s , </div>
+                                  <div class="small_val_grey" title="Pressure">1009</div>
+                              </div>
+
+                          </div>
+
+                      </div>
+                      <!-- Forecast weather -->
+                  </div>
+
+            </div>
+           </div>
+          <!-- /Dark Sky API  -->
+
+
+      </div>
+  </body>
+ 
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
